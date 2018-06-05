@@ -1,0 +1,62 @@
+---
+title: "cgraves_UNIT4_ASSIGNMENT"
+author: "Christopher Graves"
+date: "6/4/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+####Q1A
+```{r q1a, echo = TRUE}
+if(!require(fivethirtyeight)) install.packages("fivethirtyeight",repos = "http://cran.us.r-project.org")
+```
+
+####Q1B
+#####(using colleges_all_ages rather than 18th as instructed on 2DS)
+```{r q1b, echo = TRUE}
+ data(package = "fivethirtyeight")
+  df <- fivethirtyeight::college_all_ages
+```
+
+####Q1C
+
+Article Link: <http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/>
+
+```{r q1C, echo = TRUE}
+vignette("fivethirtyeight", package = "fivethirtyeight")
+```
+
+####Q1D
+```{r q1d, echo = TRUE}
+str(df)
+```
+
+####Q2A
+```{r q2A, echo = TRUE}
+names(df)
+length(names(df))
+```
+
+####Q2B
+```{r q2b, echo = TRUE}
+major_count <- table(df$major_category)
+```
+####Q2C
+```{r q2c, echo = TRUE}
+par(las=2)
+barplot(major_count, main = "Unique College Major Categories", xlab="Frequency", ylab="Major Category", col="blue", cex.names=.7, horiz=TRUE)
+```
+
+####Q2D
+```{r q2d, echo = TRUE}
+write.table(df, file="./fivethirtyeight_college_all_ages.csv", col.names=FALSE, sep=",", append=FALSE)
+```
+
+
+####Q2D
+```{r q2d, echo = TRUE}
+write.table(df, file="./fivethirtyeight_college_all_ages.csv", col.names=FALSE, sep=",", append=FALSE)
+```
