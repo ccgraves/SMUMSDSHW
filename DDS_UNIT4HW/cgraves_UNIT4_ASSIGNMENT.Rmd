@@ -56,7 +56,11 @@ write.table(df, file="./fivethirtyeight_college_all_ages.csv", col.names=FALSE, 
 ```
 
 
-####Q2D
-```{r q2d, echo = TRUE}
-write.table(df, file="./fivethirtyeight_college_all_ages.csv", col.names=FALSE, sep=",", append=FALSE)
-```
+
+####Q3ABCD
+
+Github repository can be found here: 
+
+Article Link: <https://github.com/ccgraves/SMUMSDSHW>
+
+Sub directory DDS_UNIT4HW contains deliverables including readme with more specificity than root directory
