@@ -1,0 +1,48 @@
+---
+title: "Unit 5 Assignment - CODEBOOK"
+author: "Christopher Graves"
+date: "6/11/2018"
+---
+
+Raw Data:
+
+File: yob2016.txt - Popular Names for Children in 2016
+semi colon delimmited file with 3 columns
+Column 1:  Name (Char string)
+Column 2:  Gender (denoted by "M" or "F")
+Column 3:  Amount of children born for given year (int)
+
+File: yob2015.txt - Popular Names for Children in 2016
+comma delimmited file with 3 columns
+Column 1:  Name (Char string)
+Column 2:  Gender (denoted by "M" or "F")
+Column 3:  Amount of children born for given year (int)
+
+Objects:  
+
+File:  cgrave_UNIT5_ASIGNMENT.rmd 
+Purpose:  imports 2016 and 2016 names files, merges them on name.  Exports a top10girls.csv listed the top 10 girls names based on combined totlas for 2015 and 2016
+
+Data Frames: 
+y2015
+data.frame':	33063 obs. of  3 variables:
+ $ Name  : chr  "Emma" "Olivia" "Sophia" "Ava" ...
+ $ Gender: chr  "F" "F" "F" "F" ...
+ $ Freq  : int  20415 19638 17381 16340 15574 14871 12371 11766 11381 10283 ..y
+ 
+ y2016
+ 'data.frame':	32868 obs. of  3 variables:
+ $ Name  : chr  "Emma" "Olivia" "Ava" "Sophia" ...
+ $ Gender: chr  "F" "F" "F" "F" ...
+ $ Freq  : int  19414 19246 16237 16070 14722 14366 13030 11699 10926 10733 ..
+
+str(final)
+'data.frame':	31641 obs. of  6 variables:
+ $ Name           : chr  "Emma" "Olivia" "Noah" "Liam" ...
+ $ Gender2015     : chr  "F" "F" "M" "M" ...
+ $ AmtChildren2015: int  20415 19638 19594 18330 17381 16340 16591 15863 15914 15574 ...
+ $ Gender2016     : chr  "F" "F" "M" "M" ...
+ $ AmtChildren2016: int  19414 19246 19015 18138 16070 16237 15192 15668 14416 14722 ...
+ $ Total          : int  39829 38884 38609 36468 33451 32577 31783 31531 30330 30296 ...
+> 
+
