@@ -9,22 +9,83 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+#### Q1A
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r Q1A, echo=TRUE}
+  library(tidyr)
+  df <- read.table('./yob2016.txt', header=FALSE)
+  df2 <- separate(df,col = 1, into=c("Name", "Gender", "AmtChildren"), sep=';',remove = TRUE, convert = TRUE, extra = "warn")
+  str(df2)
 ```
 
-## Including Plots
+#### Q1B
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r Q1B, echo=TRUE}
+  str(df2)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+#### Q1C
+
+```{r Q1C, echo=TRUE}
+  df2$Name[grep("yyy$", df2$Name)]
+```
+
+#### Q1D
+
+```{r Q1D, echo=TRUE}
+  y2016 <- df2[!grepl("yyy$", df2$Name),]
+```
+
+#### Q2A
+
+```{r Q2A, echo=TRUE}
+  y2015 <- separate(read.table('./yob2015.txt', header=FALSE),col = 1, into=c("Name", "Gender", "AmtChildren"), sep=',',remove = TRUE, convert = TRUE, extra = "warn")
+```
+
+#### Q2B
+
+```{r Q2B, echo=TRUE}
+  tail(y2015,10)
+```
+
+They are all z names of the same (small) frequency implying there is a sort order here.
+
+#### Q2C
+
+```{r Q2C, echo=TRUE}
+  final <- merge(y2015,y2016, by ="Name")
+  names(final) <-  c("Name", "Gender2015", "AmtChildren2015", "Gender2016", "AmtChildren2016")
+```
+
+#### Q3A
+
+```{r Q3A, echo=TRUE}
+  final$Total <- final$AmtChildren2015 + final$AmtChildren2016
+  sum(final$Total)
+```
+
+#### Q3B
+
+```{r Q3B, echo=TRUE}
+  final <- final[with(final, order(-final$Total)),]
+  head(final,10)
+```
+
+#### Q3C
+
+```{r Q3C, echo=TRUE}
+  top10girls <- head(final[final$Gender2015 == "F",],10)
+  top10girls
+```
+
+#### Q3D
+
+```{r Q3D, echo=TRUE}
+  write.csv(subset(top10girls, select = c("Name", "Total"))[1:10,],"top10girls.csv", row.names = FALSE)
+```
+
+#### Q4
+
+https://github.com/ccgraves/SMUMSDSHW/
+
+
